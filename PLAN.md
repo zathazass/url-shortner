@@ -1,11 +1,11 @@
 URL Shortner Application
 ========================
 
-[ ] Create and List out URLs
-[ ] Update and Delete URL
-[ ] Redirect to actual url
-
-NOTE: Implement both web api and REST api.
+[x] Create and List out URLs
+[x] Update and Delete URL
+[x] Redirect to actual url
+[x] REST API
+[ ] Web API
 
 
 WHAT ARE THE DATA TO STORE ?

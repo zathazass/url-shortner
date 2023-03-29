@@ -3,8 +3,12 @@ import string
 from django.db import models
 
 
+SHORT_URL_MIN_LENGTH = 3
+SHORT_URL_MAX_LENGTH = 15
+
+
 class URLCollection(models.Model):
-    redirect_url = models.CharField(max_length=2048, unique=True)
+    redirect_url = models.URLField(max_length=2048, unique=True)
     url_name = models.CharField(max_length=256, null=True, blank=True)
     short_url = models.CharField(max_length=32, unique=True, db_index=True)
     redirect_count = models.PositiveBigIntegerField(default=0)
@@ -14,7 +18,9 @@ class URLCollection(models.Model):
 
     def set_short_url(self):
         letters = string.ascii_letters + string.digits
-        length = random.choice(range(3,16))
+        length = random.choice(
+            range(SHORT_URL_MIN_LENGTH, SHORT_URL_MAX_LENGTH + 1)
+        )
         short_url = ''.join(random.choices(letters, k=length))
 
         is_unique = False
